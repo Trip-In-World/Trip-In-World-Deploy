@@ -1,0 +1,6 @@
+[submodule "Trip-In-World-Backend"]
+	path = Trip-In-World-Backend
+	url = https://github.com/Trip-In-World/Trip-In-World-Backend.git
+[submodule "Trip-In-World-Frontend"]
+	path = Trip-In-World-Frontend
+	url = https://github.com/Trip-In-World/Trip-In-World-Frontend.git
