@@ -28,7 +28,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-        working-directory: ${{ env.backend }}
 
       - name: Gradle Caching
         uses: actions/cache@v3
@@ -39,7 +38,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle
-        working-directory: ${{ env.backend }}
 
       - name: Gradle execute permission for gradlew
         run: chmod +x ./gradlew
