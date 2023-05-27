@@ -36,7 +36,7 @@ jobs:
             ~/gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runnder.os }}-gradle
+            ${{ runner.os }}-gradle
 
       - name: Gradle execute permission for gradlew
         run: chmod +x ./gradlew
