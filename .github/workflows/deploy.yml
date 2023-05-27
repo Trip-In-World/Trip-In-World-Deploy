@@ -16,20 +16,19 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      backend: ./WAGGLE_BACKEND
     steps:
-    # Backend Deploy
       - uses: actions/checkout@v3
         with:
           submodules: true
-
-      - name: Move to Backend Repository
-        run: cd WAGGLE_BACKEND
       
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
+        working-directory: ${{ env.backend }}
 
       - name: Gradle Caching
         uses: actions/cache@v3
@@ -40,14 +39,16 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle
+        working-directory: ${{ env.backend }}
 
       - name: Gradle execute permission for gradlew
         run: chmod +x ./gradlew
+        working-directory: ${{ env.backend }}
 
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
+        run: ./gradlew clean build
+        working-directory: ${{ env.backend }}
       
       - name: Separate of Spring application layers
         run: java -Djarmode=layertools -jar build/libs/${{ secrets.JAR_NAME }} extract
+        working-directory: ${{ env.backend }}
