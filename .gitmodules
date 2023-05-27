@@ -1,8 +1,8 @@
-[submodule "Trip-In-World-Backend"]
-	path = Trip-In-World-Backend
-	url = https://github.com/Trip-In-World/Trip-In-World-Backend.git
-	branch = main
-[submodule "Trip-In-World-Frontend"]
-	path = Trip-In-World-Frontend
-	url = https://github.com/Trip-In-World/Trip-In-World-Frontend.git
-	branch = main
+[submodule "WAGGLE_BACKEND"]
+	path = WAGGLE_BACKEND
+	url = https://github.com/WAGGLE-TEAM/WAGGLE_BACKEND
+    branch = main
+[submodule "WAGGLE_WEB_FRONTEND"]
+	path = WAGGLE_WEB_FRONTEND
+	url = https://github.com/WAGGLE-TEAM/WAGGLE_WEB_FRONTEND
+    branch = main

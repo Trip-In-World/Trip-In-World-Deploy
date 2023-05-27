@@ -36,10 +36,12 @@ jobs:
             ~/gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runnder.os }}-gradle
+            ${{ runner.os }}-gradle
 
       - name: Gradle execute permission for gradlew
-        run: chmod +x ./gradlew
+        run: |
+          cd WAGGLE_BACKEND
+          chmod +x ./gradlew
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
