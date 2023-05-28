@@ -40,6 +40,8 @@ jobs:
         run: ./gradlew clean build
       - name: Separate of Spring application layers
         run: java -Djarmode=layertools -jar build/libs/${{ secrets.JAR_NAME }} extract
+      - name: Show directory
+        run: ls
       - name: Build Docker & push
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
