@@ -1,7 +1,7 @@
 [submodule "WAGGLE_BACKEND"]
 	path = WAGGLE_BACKEND
 	url = https://github.com/WAGGLE-TEAM/WAGGLE_BACKEND
-    branch = main
+    branch = hotfix/issue-11/dockerfile-fix
 [submodule "WAGGLE_WEB_FRONTEND"]
 	path = WAGGLE_WEB_FRONTEND
 	url = https://github.com/WAGGLE-TEAM/WAGGLE_WEB_FRONTEND
