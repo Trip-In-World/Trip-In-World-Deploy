@@ -1,0 +1,42 @@
+name: Deploy Frontend Project
+
+on:
+  push:
+    branches: 
+      - frontend-test   # 테스트 서버
+      - frontend  # 배포 서버
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backend-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./WAGGLE_WEB_FRONTEND
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install node module
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build Docker & push
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.REPOSITORY }}:web-frontend .
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.REPOSITORY }}:web-frontend
+      
