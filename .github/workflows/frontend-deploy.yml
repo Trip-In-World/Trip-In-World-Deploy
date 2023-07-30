@@ -3,7 +3,6 @@ name: Deploy Frontend Project
 on:
   push:
     branches: 
-      - frontend-test   # 테스트 서버
       - frontend  # 배포 서버
   workflow_dispatch:
 
