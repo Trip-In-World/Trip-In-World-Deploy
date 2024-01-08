@@ -1,8 +1,6 @@
-[submodule "WAGGLE_BACKEND"]
-	path = WAGGLE_BACKEND
-	url = https://github.com/WAGGLE-TEAM/WAGGLE_BACKEND
-    branch = main
-[submodule "WAGGLE_WEB_FRONTEND"]
-	path = WAGGLE_WEB_FRONTEND
-	url = https://github.com/WAGGLE-TEAM/WAGGLE_WEB_FRONTEND
-    branch = main
+[submodule "travity-web"]
+	path = travity-web
+	url = https://github.com/travity-team/travity-web.git
+[submodule "travity-backend"]
+	path = travity-backend
+	url = https://github.com/travity-team/travity-backend.git
